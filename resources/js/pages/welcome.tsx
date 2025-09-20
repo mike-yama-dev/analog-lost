@@ -12,16 +12,6 @@ export default function AccordionExpandIcon({videos}: {videos: any}) {
   const [day2Time, setDay2Time] = useState(0);
   return (
     <div>
-      <AccordionSummary
-          expandIcon={<ArrowDropDownIcon />}
-          aria-controls="panel2-content"
-          id="panel2-header"
-        >
-          <Typography component="span">Day 1 - Jerome, AZ</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/0lkhDuA7eMY?si=OjG7nOaSH53H-W10" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-        </AccordionDetails>
       <Accordion>
         <AccordionSummary
           expandIcon={<ArrowDropDownIcon />}
