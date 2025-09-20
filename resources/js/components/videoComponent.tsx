@@ -37,8 +37,8 @@ export default function VideoComponent({ youtubeId, startTime, timeStamp, setTim
         <iframe
           // FIX 1: Add a dynamic key. This is the most important change!
           key={`${youtubeId}-${startTime}`}
-          width="450"
-          height="280"
+          width="400"
+          height="250"
           // FIX 2: Use '?' for the first parameter and add autoplay for better UX
           src={`https://www.youtube.com/embed/${youtubeId}?start=${startTime}`}
           title="YouTube video player"
