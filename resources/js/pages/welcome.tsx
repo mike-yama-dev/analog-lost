@@ -39,6 +39,7 @@ export default function Welcome({ videos }: VideoAccordionProps) {
   const [paranormal1Time, setParanormal1Time] = useState(0);
   const [paranormal2Time, setParanormal2Time] = useState(0);
   const [paranormal3Time, setParanormal3Time] = useState(0);
+
   return (
     <div>
       {videos.map((video) => {
