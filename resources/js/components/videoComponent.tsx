@@ -40,7 +40,7 @@ export default function VideoComponent({ youtubeId, startTime, timeStamp, setTim
           width="560"
           height="315"
           // FIX 2: Use '?' for the first parameter and add autoplay for better UX
-          src={`https://www.youtube.com/embed/${youtubeId}?start=${startTime}`}
+          src={`https://www.youtube.com/embed/${youtubeId}?start=${startTime}&autoplay=1`}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
