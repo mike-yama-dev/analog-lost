@@ -25,19 +25,19 @@ export default function Welcome({ videos }: WelcomeProps) {
   // Log the state every time the component re-renders
   console.log('Component rendered. Current startTimes state:', startTimes);
 
-  const handleTimestampClick = (videoId: string | number, time: number) => {
+  const handleTimestampClick = (videoId: string | number, timestamp_seconds: number) => {
     // 1. Log the incoming click event data
-    console.log(`Timestamp clicked for videoId: ${videoId} with time: ${time}`);
+    console.log(`Timestamp clicked for videoId: ${videoId} with time: ${timestamp_seconds}`);
     
     // Defensive check: Ensure the time is a valid number before updating state
-    if (typeof time !== 'number') {
+    if (typeof timestamp_seconds !== 'number') {
       console.error("Aborting state update: Invalid time value received.");
       return;
     }
 
     setStartTimes((prevTimes) => ({
       ...prevTimes,
-      [videoId]: time,
+      [videoId]: timestamp_seconds,
     }));
   };
 
