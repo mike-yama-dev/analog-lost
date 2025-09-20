@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 export default function VideoComponent({ youtubeId, startTime, timeStamp, setTimestamp }: { youtubeId: string; startTime: number; timeStamp: any, setTimestamp: any }) {
-
+    console.log('Rendering VideoComponent with props:', { youtubeId, startTime, timeStamp });
     return(
      <Accordion>
 
