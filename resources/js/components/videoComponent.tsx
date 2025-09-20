@@ -55,7 +55,7 @@ export default function VideoComponent({ youtubeId, startTime, timeStamp, setTim
               onClick={() => setTimestamp(timestamp.timestamp_seconds)}
             >
                 <p>
-              {timestamp.label} - {timestamp.timestamp_seconds}s
+              {timestamp.label}
               </p>
             </button>
           ))}
