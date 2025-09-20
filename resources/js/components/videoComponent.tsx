@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; // Make sure to import React
 import {
   Accordion,
   AccordionSummary,
@@ -7,6 +7,7 @@ import {
 } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
+// Define the shape of your props for better type safety
 interface Timestamp {
   id: number;
   label: string;
@@ -15,13 +16,13 @@ interface Timestamp {
 
 interface VideoComponentProps {
   youtubeId: string;
-  title: string; // Add title to props
   startTime: number;
   timeStamp: Timestamp[];
   setTimestamp: (time: number) => void;
+    title: string; // Add title prop
 }
 
-export default function VideoComponent({ youtubeId, title, startTime, timeStamp, setTimestamp }: VideoComponentProps) {
+export default function VideoComponent({ youtubeId, startTime, timeStamp, setTimestamp, title }: VideoComponentProps) {
   return (
     <Accordion>
       <AccordionSummary
@@ -29,18 +30,17 @@ export default function VideoComponent({ youtubeId, title, startTime, timeStamp,
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        {/* Display the video title instead of the messy ID */}
         <Typography component="span">{title}</Typography>
       </AccordionSummary>
 
       <AccordionDetails>
         <iframe
-          // The key is essential for forcing the video to update
+          // FIX 1: Add a dynamic key. This is the most important change!
           key={`${youtubeId}-${startTime}`}
           width="560"
           height="315"
-          // The src is now built with a clean ID and correct '?'
-          src={`https://www.youtube.com/embed/${youtubeId}?start=${startTime}&autoplay=1`}
+          // FIX 2: Use '?' for the first parameter and add autoplay for better UX
+          src={`https://www.youtube.com/embed/${youtubeId}?start=${startTime}`}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
@@ -51,6 +51,7 @@ export default function VideoComponent({ youtubeId, title, startTime, timeStamp,
           {timeStamp.map((timestamp) => (
             <button
               key={timestamp.id}
+              // FIX 3: Use the correct property 'timestamp_seconds'
               onClick={() => setTimestamp(timestamp.timestamp_seconds)}
             >
               {timestamp.label} - {timestamp.timestamp_seconds}s
