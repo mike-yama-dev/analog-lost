@@ -24,6 +24,7 @@ export default function Welcome({ videos }: WelcomeProps) {
   
   // Log the state every time the component re-renders
   console.log('Component rendered. Current startTimes state:', startTimes);
+  console.log('Videos prop:', startTimes[videos[1].id]);
 
   const handleTimestampClick = (videoId: string | number, timestamp_seconds: number) => {
     // 1. Log the incoming click event data
