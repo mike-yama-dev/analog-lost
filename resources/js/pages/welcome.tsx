@@ -12,7 +12,7 @@ import VideoComponent from '../components/videoComponent';
 interface Timestamp {
   id: number;
   label: string;
-  time: number;
+  timestamp_seconds: number;
 }
 
 interface Video {
@@ -28,13 +28,13 @@ interface VideoAccordionProps {
 
 export default function Welcome({ videos }: VideoAccordionProps) {
   // State to hold the start times for each video, e.g., { videoId1: 65, videoId2: 120 }
-  const [day1Time, setDay1Time] = useState(0);
-  const [day2Time, setDay2Time] = useState(0);
-  const [day3Time, setDay3Time] = useState(0);
-  const [day4Time, setDay4Time] = useState(0);
-  const [day5Time, setDay5Time] = useState(0);
-  const [day6Time, setDay6Time] = useState(0);
-  const [day7Time, setDay7Time] = useState(0);
+  const [day1Time, setDay1Time] = useState(videos[0]?.timestamps[0]?.timestamp_seconds || 0);
+  const [day2Time, setDay2Time] = useState(videos[1]?.timestamps[0]?.timestamp_seconds || 0);
+  const [day3Time, setDay3Time] = useState(videos[2]?.timestamps[0]?.timestamp_seconds || 0);
+  const [day4Time, setDay4Time] = useState(videos[3]?.timestamps[0]?.timestamp_seconds || 0);
+  const [day5Time, setDay5Time] = useState(videos[4]?.timestamps[0]?.timestamp_seconds || 0);
+  const [day6Time, setDay6Time] = useState(videos[5]?.timestamps[0]?.timestamp_seconds || 0);
+  const [day7Time, setDay7Time] = useState(videos[6]?.timestamps[0]?.timestamp_seconds || 0);
 
   const [paranormal1Time, setParanormal1Time] = useState(0);
   const [paranormal2Time, setParanormal2Time] = useState(0);
