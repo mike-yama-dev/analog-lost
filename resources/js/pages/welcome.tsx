@@ -7,84 +7,68 @@ import {
 } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
+import VideoComponent from '../components/videoComponent';
 
-interface Video {
-  id: string | number;
-  title: string;
-  youtube_id: string;
-  timestamps: { id: string | number; timestamp_seconds: number; label: string }[];
+interface Timestamp {
+  id: number;
+  label: string;
+  time: number;
 }
 
-interface WelcomeProps {
+interface Video {
+  id: number;
+  title: string;
+  youtube_id: string;
+  timestamps: Timestamp[];
+}
+
+interface VideoAccordionProps {
   videos: Video[];
 }
 
-export default function Welcome({ videos }: WelcomeProps) {
-  const [startTimes, setStartTimes] = React.useState<Record<string | number, number>>({});
-  
-  // Log the state every time the component re-renders
-  console.log('Component rendered. Current startTimes state:', startTimes);
-  console.log('Videos prop:', startTimes[videos[1].id]);
+export default function Welcome({ videos }: VideoAccordionProps) {
+  // State to hold the start times for each video, e.g., { videoId1: 65, videoId2: 120 }
+  const [day1Time, setDay1Time] = useState(0);
+  const [day2Time, setDay2Time] = useState(0);
+  const [day3Time, setDay3Time] = useState(0);
+  const [day4Time, setDay4Time] = useState(0);
+  const [day5Time, setDay5Time] = useState(0);
+  const [day6Time, setDay6Time] = useState(0);
+  const [day7Time, setDay7Time] = useState(0);
 
-  const handleTimestampClick = (videoId: string | number, timestamp_seconds: number) => {
-    // 1. Log the incoming click event data
-    console.log(`Timestamp clicked for videoId: ${videoId} with time: ${timestamp_seconds}`);
-    
-    // Defensive check: Ensure the time is a valid number before updating state
-    if (typeof timestamp_seconds !== 'number') {
-      console.error("Aborting state update: Invalid time value received.");
-      return;
-    }
-
-    setStartTimes((prevTimes) => ({
-      ...prevTimes,
-      [videoId]: timestamp_seconds,
-    }));
-  };
-
+  const [paranormal1Time, setParanormal1Time] = useState(0);
+  const [paranormal2Time, setParanormal2Time] = useState(0);
+  const [paranormal3Time, setParanormal3Time] = useState(0);
   return (
     <div>
       {videos.map((video) => {
-        const currentStartTime = startTimes[video.id] || 0;
-        
-        // 2. Log the values being used to build the iframe for each video
-        const iframeKey = `${video.id}-${currentStartTime}`;
-        console.log(`Rendering video "${video.title}". Key: "${iframeKey}"`);
+        let startTime = 0;
+        let setTimestampFunction = (time: number) => {};
+        if (video.id === 1) {
+          startTime = day1Time;
+          setTimestampFunction = setDay1Time;
+        } else if (video.id === 2) {
+          startTime = day2Time;
+          setTimestampFunction = setDay2Time;
+        } else if (video.id === 3) {
+          startTime = day3Time;
+          setTimestampFunction = setDay3Time;
+        } else if (video.id === 4) {
+          startTime = day4Time;
+          setTimestampFunction = setDay4Time;
+        } else if (video.id === 5) {            
+          startTime = day5Time;
+          setTimestampFunction = setDay5Time;
+        }
 
         return (
-          <Accordion key={video.id}>
-            <AccordionSummary
-              expandIcon={<ArrowDropDownIcon />}
-              aria-controls={`panel-${video.id}-content`}
-              id={`panel-${video.id}-header`}
-            >
-              <Typography>{video.title}</Typography>
-            </AccordionSummary>
-
-            <AccordionDetails>
-              <iframe
-                key={iframeKey} // Use the generated key
-                width="560"
-                height="315"
-                src={`https://www.youtube.com/embed/${video.youtube_id}?start=${startTimes[video.id] || 0}&autoplay=1`}
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              ></iframe>
-            </AccordionDetails>
-
-            {/* Timestamp buttons */}
-            {video.timestamps.map((timestamp) => (
-              <AccordionDetails key={timestamp.id} style={{ paddingTop: 0 }}>
-                <button
-                  onClick={() => handleTimestampClick(video.id, timestamp.timestamp_seconds)} // Ensure correct property name
-                >
-                  {timestamp.label}
-                </button>
-              </AccordionDetails>
-            ))}
-          </Accordion>
+          <VideoComponent
+            key={video.id}
+            youtubeId={video.youtube_id}
+            startTime={startTime}
+            timeStamp={video.timestamps}
+            setTimestamp={setTimestampFunction}
+          />
         );
       })}
     </div>
