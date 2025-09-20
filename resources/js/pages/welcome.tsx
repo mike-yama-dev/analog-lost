@@ -17,7 +17,6 @@ interface Video {
   id: string | number;
   title: string;
   youtube_id: string;
-  timestamps: Timestamp[];
 }
 
 interface WelcomeProps {
