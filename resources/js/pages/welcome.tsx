@@ -12,7 +12,7 @@ interface Video {
   id: string | number;
   title: string;
   youtube_id: string;
-  timestamps: { id: string | number; time: number; label: string }[];
+  timestamps: { id: string | number; timestamp_seconds: number; label: string }[];
 }
 
 interface WelcomeProps {
@@ -77,7 +77,7 @@ export default function Welcome({ videos }: WelcomeProps) {
             {video.timestamps.map((timestamp) => (
               <AccordionDetails key={timestamp.id} style={{ paddingTop: 0 }}>
                 <button
-                  onClick={() => handleTimestampClick(video.id, timestamp.time)}
+                  onClick={() => handleTimestampClick(video.id, timestamp.timestamp_seconds)} // Ensure correct property name
                 >
                   {timestamp.label}
                 </button>
