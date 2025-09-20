@@ -1,126 +1,92 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import React, { useState } from 'react';
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+} from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-export default function AccordionExpandIcon({videos}: {videos: any}) {
-  console.log(videos);
-  const [day2Time, setDay2Time] = useState(0);
+interface Timestamp {
+  id: string | number;
+  time: number;
+  label: string;
+}
+
+interface Video {
+  id: string | number;
+  title: string;
+  youtube_id: string;
+  timestamps: Timestamp[];
+}
+
+interface WelcomeProps {
+  videos: Video[];
+}
+
+export default function Welcome({ videos }: WelcomeProps) {
+  // State to hold the start times for each video, e.g., { videoId1: 65, videoId2: 120 }
+  const [startTimes, setStartTimes] = useState<Record<string | number, number>>({});
+
+  // Function to update the start time for a specific video
+  const handleTimestampClick = (videoId: string | number, time: number) => {
+    setStartTimes((prevTimes) => ({
+      ...prevTimes, // Keep all other video times
+      [videoId]: time, // Update the time for the specific video
+    }));
+  };
+
   return (
     <div>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ArrowDropDownIcon />}
-          aria-controls="panel2-content"
-          id="panel2-header"
-        >
-          <Typography component="span">Day 1 - Jerome, AZ</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/0lkhDuA7eMY?si=OjG7nOaSH53H-W10" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-        </AccordionDetails>
-      </Accordion>
+      {videos.map((video) => {
+        // Get the current start time for this video, or default to 0
+        const currentStartTime = startTimes[video.id] || 0;
 
-       <Accordion>
-        <AccordionSummary
-          expandIcon={<ArrowDropDownIcon />}
-          aria-controls="panel2-content"
-          id="panel2-header"
-        >
-          <Typography component="span">Day 2 - Holbrook, AZ</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <iframe width="560" height="315" src={`https://www.youtube.com/embed/jhsk6Q5X3_w?si=O5zIMTortibrxahY&start=${day2Time}`} title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+        return (
+          <Accordion key={video.id}>
+            <AccordionSummary
+              expandIcon={<ArrowDropDownIcon />}
+              aria-controls={`panel-${video.id}-content`}
+              id={`panel-${video.id}-header`}
+            >
+              <Typography>{video.title}</Typography>
+            </AccordionSummary>
 
-        </AccordionDetails>
-        <AccordionDetails>
-                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start'}}>
-          <button onClick={() => {
-            setDay2Time(717);
-          }}>Stream Starts</button>
-                    <button onClick={() => {
-            setDay2Time(2006);
-          }}>On the road!</button>
-          <button onClick={() => {
-            setDay2Time(4394);
-          }}>Breakfast</button>
-          <button onClick={() => {
-            setDay2Time(6704);
-          }}>Back on the road</button>
-          </div>
-        </AccordionDetails>
-      </Accordion>
+            {/* Main video iframe */}
+            <AccordionDetails>
+              <iframe
+                // The key is important! It forces the iframe to re-mount when the src changes.
+                key={`${video.id}-${currentStartTime}`}
+                width="560"
+                height="315"
+                // Note: The first URL parameter must use '?' instead of '&'
+                src={`https://www.youtube.com/embed/${
+                  video.youtube_id
+                }?start=${currentStartTime}&autoplay=1`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              ></iframe>
+            </AccordionDetails>
 
-             <Accordion>
-        <AccordionSummary
-          expandIcon={<ArrowDropDownIcon />}
-          aria-controls="panel2-content"
-          id="panel2-header"
-        >
-          <Typography component="span">Day 3 - Holbrook, AZ - extended</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/0lkhDuA7eMY?si=OjG7nOaSH53H-W10" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-        </AccordionDetails>
-      </Accordion>
-
-             <Accordion>
-        <AccordionSummary
-          expandIcon={<ArrowDropDownIcon />}
-          aria-controls="panel2-content"
-          id="panel2-header"
-        >
-          <Typography component="span">Day 4 - Roswell, NM</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/0lkhDuA7eMY?si=OjG7nOaSH53H-W10" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-        </AccordionDetails>
-      </Accordion>
-
-             <Accordion>
-        <AccordionSummary
-          expandIcon={<ArrowDropDownIcon />}
-          aria-controls="panel2-content"
-          id="panel2-header"
-        >
-          <Typography component="span">Day 5 - Alibene, TX</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/0lkhDuA7eMY?si=OjG7nOaSH53H-W10" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-        </AccordionDetails>
-      </Accordion>
-             <Accordion>
-        <AccordionSummary
-          expandIcon={<ArrowDropDownIcon />}
-          aria-controls="panel2-content"
-          id="panel2-header"
-        >
-          <Typography component="span">Day 6 - Jefferson, TX</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/0lkhDuA7eMY?si=OjG7nOaSH53H-W10" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-        </AccordionDetails>
-      </Accordion>
-
-             <Accordion>
-        <AccordionSummary
-          expandIcon={<ArrowDropDownIcon />}
-          aria-controls="panel2-content"
-          id="panel2-header"
-        >
-          <Typography component="span">Day 7 - New Orleans, LA</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/0lkhDuA7eMY?si=OjG7nOaSH53H-W10" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-        </AccordionDetails>
-      </Accordion>
-
-
-
+            {/* Timestamp buttons */}
+            {video.timestamps.map((timestamp) => (
+              <AccordionDetails key={timestamp.id} style={{ paddingTop: 0 }}>
+                <button
+                  onClick={() => handleTimestampClick(video.id, timestamp.time)}
+                >
+                  {timestamp.label} -{' '}
+                  {new Date(timestamp.time * 1000)
+                    .toISOString()
+                    .substring(11, 19)}
+                </button>
+              </AccordionDetails>
+            ))}
+          </Accordion>
+        );
+      })}
     </div>
   );
 }
+
