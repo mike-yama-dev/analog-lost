@@ -1,4 +1,4 @@
-import React from 'react'; // Make sure to import React
+import React from 'react';
 import {
   Accordion,
   AccordionSummary,
@@ -7,7 +7,6 @@ import {
 } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-// Define the shape of your props for better type safety
 interface Timestamp {
   id: number;
   label: string;
@@ -16,12 +15,13 @@ interface Timestamp {
 
 interface VideoComponentProps {
   youtubeId: string;
+  title: string; // Add title to props
   startTime: number;
   timeStamp: Timestamp[];
   setTimestamp: (time: number) => void;
 }
 
-export default function VideoComponent({ youtubeId, startTime, timeStamp, setTimestamp }: VideoComponentProps) {
+export default function VideoComponent({ youtubeId, title, startTime, timeStamp, setTimestamp }: VideoComponentProps) {
   return (
     <Accordion>
       <AccordionSummary
@@ -29,16 +29,17 @@ export default function VideoComponent({ youtubeId, startTime, timeStamp, setTim
         aria-controls="panel1a-content"
         id="panel1a-header"
       >
-        <Typography component="span">{youtubeId}</Typography>
+        {/* Display the video title instead of the messy ID */}
+        <Typography component="span">{title}</Typography>
       </AccordionSummary>
 
       <AccordionDetails>
         <iframe
-          // FIX 1: Add a dynamic key. This is the most important change!
+          // The key is essential for forcing the video to update
           key={`${youtubeId}-${startTime}`}
           width="560"
           height="315"
-          // FIX 2: Use '?' for the first parameter and add autoplay for better UX
+          // The src is now built with a clean ID and correct '?'
           src={`https://www.youtube.com/embed/${youtubeId}?start=${startTime}&autoplay=1`}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -50,7 +51,6 @@ export default function VideoComponent({ youtubeId, startTime, timeStamp, setTim
           {timeStamp.map((timestamp) => (
             <button
               key={timestamp.id}
-              // FIX 3: Use the correct property 'timestamp_seconds'
               onClick={() => setTimestamp(timestamp.timestamp_seconds)}
             >
               {timestamp.label} - {timestamp.timestamp_seconds}s
