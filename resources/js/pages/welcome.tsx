@@ -76,10 +76,7 @@ export default function Welcome({ videos }: WelcomeProps) {
                 <button
                   onClick={() => handleTimestampClick(video.id, timestamp.time)}
                 >
-                  {timestamp.label} -{' '}
-                  {new Date(timestamp.time * 1000)
-                    .toISOString()
-                    .substring(11, 19)}
+                  {timestamp.label}
                 </button>
               </AccordionDetails>
             ))}
