@@ -7,16 +7,12 @@ import {
 } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
-interface Timestamp {
-  id: string | number;
-  time: number;
-  label: string;
-}
 
 interface Video {
   id: string | number;
   title: string;
   youtube_id: string;
+  timestamps: { id: string | number; time: number; label: string }[];
 }
 
 interface WelcomeProps {
@@ -34,7 +30,7 @@ export default function Welcome({ videos }: WelcomeProps) {
       [videoId]: time, // Update the time for the specific video
     }));
   };
-
+  console.log(videos);
   return (
     <div>
       {videos.map((video) => {
