@@ -9,7 +9,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = 'Get Lost!';
 
 createInertiaApp({
     title: (title) => title ? `${title} - ${appName}` : appName,
