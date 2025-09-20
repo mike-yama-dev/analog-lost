@@ -47,14 +47,16 @@ export default function VideoComponent({ youtubeId, startTime, timeStamp, setTim
           allowFullScreen
         ></iframe>
 
-        <div>
+        <div className="flex flex-col justify-start items-start mt-4 space-y-2">
           {timeStamp.map((timestamp) => (
             <button
               key={timestamp.id}
               // FIX 3: Use the correct property 'timestamp_seconds'
               onClick={() => setTimestamp(timestamp.timestamp_seconds)}
             >
+                <p>
               {timestamp.label} - {timestamp.timestamp_seconds}s
+              </p>
             </button>
           ))}
         </div>
