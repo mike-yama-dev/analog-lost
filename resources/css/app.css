@@ -1,5 +1,5 @@
 /* 1. Add the new font import at the top */
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light+Two&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import 'tailwindcss';
 
 @source '../views';
@@ -7,6 +7,6 @@
 
 @theme {
     /* 2. Update the font name here */
-    --font-sans: 'Shadows Into Light Two', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    --font-sans: 'Bebas Neue', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', 'Noto Color Emoji';
 }
