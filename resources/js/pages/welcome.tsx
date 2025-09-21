@@ -37,7 +37,7 @@ export default function Welcome({ videos }: VideoAccordionProps) {
   };
 
   return (
-    <div style={{backgroundColor: '#000000', padding: '1rem', borderRadius: '8px', height: '100vh', overflowY: 'auto'}}>
+    <div style={{backgroundColor: '#000000', padding: '1rem', height: '100vh', overflowY: 'auto'}}>
       {videos.map((video) => (
         <VideoComponent
           key={video.id}
