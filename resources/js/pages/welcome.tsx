@@ -40,10 +40,10 @@ export default function Welcome({ videos }: VideoAccordionProps) {
     <div>
       <header style={{backgroundColor: 'rgba(0, 0, 0, 1)', }}>
 <div style={{
-  backgroundImage: 'url(/header.png)',
+  backgroundImage: 'url(/banner.png)',
   width: '100%',
   // Height will be 25vw, but never smaller than 180px or larger than 400px
-  height: 'clamp(180px, 25vw, 400px)',
+  height: 'clamp(180px, 21vw, 400px)',
   backgroundSize: 'contain',
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center', 
