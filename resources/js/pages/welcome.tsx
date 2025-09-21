@@ -38,7 +38,7 @@ export default function Welcome({ videos }: VideoAccordionProps) {
 
   return (
     <div>
-      <header style={{backgroundColor: 'rgba(0, 0, 0, 1)', }}>
+      <header style={{backgroundColor: '#090021', }}>
 <div style={{
   backgroundImage: 'url(/banner.png)',
   width: '100%',
