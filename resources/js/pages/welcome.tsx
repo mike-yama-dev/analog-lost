@@ -37,7 +37,22 @@ export default function Welcome({ videos }: VideoAccordionProps) {
   };
 
   return (
-    <div style={{backgroundColor: '#000000', padding: '1rem', height: '100vh', overflowY: 'auto', backgroundImage: 'url(/background.png)', backgroundSize: '40rem', backgroundRepeat: 'repeat', backgroundPosition: 'center'}}>
+    <div>
+      <header style={{backgroundColor: 'rgba(0, 0, 0, 1)', }}>
+<div style={{
+  backgroundImage: 'url(/header.png)',
+  width: '100%',
+  // Height will be 25vw, but never smaller than 180px or larger than 400px
+  height: 'clamp(180px, 25vw, 400px)',
+  backgroundSize: 'contain',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center', 
+  
+}}></div>
+
+      </header>
+    <div style={{ padding: '1rem', height: '100vh', overflowY: 'auto', backgroundImage: 'url(/background.png)', backgroundSize: '40rem', backgroundRepeat: 'repeat', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+      <h1 style={{ color: '#fff', textAlign: 'center', backgroundColor: '#000000', maxWidth: '20rem', margin: '0 auto', marginBottom: '1rem' }} className="text-xl rounded-xl">Get Lost Timestamps!</h1>
       {videos.map((video) => (
         <VideoComponent
           key={video.id}
@@ -51,6 +66,7 @@ export default function Welcome({ videos }: VideoAccordionProps) {
           setTimestamp={(time) => handleTimestampUpdate(video.id, time)}
         />
       ))}
+    </div>
     </div>
   );
 }

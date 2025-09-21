@@ -30,18 +30,21 @@ export default function VideoComponent({
   title
 }: VideoComponentProps) {
   return (
-    <div className="mb-6" style={{ maxWidth: '560px', margin: '0 auto',  }}>
-    <Accordion>
+    <div className="mb-6" style={{maxWidth: '560px', margin: '0 auto',  }}>
+    <Accordion   sx={{ 
+    background: 'rgba(255, 255, 255, 0.5)',
+    boxShadow: 'none' // Optional: removes the default shadow which can look odd
+  }}>
       <AccordionSummary
         expandIcon={<ArrowDropDownIcon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
-        style={{ backgroundColor: '#4d4d4dff', color: '#FFFFFF' }} // Dark theme styles
+        sx={{ background: 'rgba(255, 0, 0, 0)', color: '#000' }} // Dark theme styles
       >
         <Typography component="span">{title}</Typography>
       </AccordionSummary>
 
-      <AccordionDetails style={{ backgroundColor: '#616060ff' }}>
+      <AccordionDetails sx={{ backgroundColor: 'rgba(252, 252, 252, 0.12)' }}>
         {/* Container for the responsive iframe */}
         <div className="relative" style={{ paddingBottom: '56.25%',  }}>
           <iframe
@@ -61,7 +64,7 @@ export default function VideoComponent({
             <button
               key={timestamp.id}
               onClick={() => setTimestamp(timestamp.timestamp_seconds)}
-              className="text-white underline" // Added some basic styling
+              className="text-black underline" // Added some basic styling
             >
               <p>{timestamp.label}</p>
             </button>
