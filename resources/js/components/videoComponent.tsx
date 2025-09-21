@@ -32,21 +32,23 @@ export default function VideoComponent({
   return (
     <div className="mb-6" style={{maxWidth: '560px', margin: '0 auto',  }}>
     <Accordion   sx={{ 
-    background: 'rgba(255, 255, 255, 0.5)',
-    boxShadow: 'none' // Optional: removes the default shadow which can look odd
+    background: 'rgba(255, 255, 255, 0.78)',
+    boxShadow: 'none', // Optional: removes the default shadow which can look odd
+    borderRadius: '15px',
+    marginBottom: '1rem' // Optional: adds rounded corners
   }}>
       <AccordionSummary
         expandIcon={<ArrowDropDownIcon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
-        sx={{ background: 'rgba(255, 0, 0, 0)', color: '#000' }} // Dark theme styles
+        sx={{ background: 'rgba(255, 0, 0, 0)', color: '#000',  }} // Dark theme styles
       >
         <Typography component="span">{title}</Typography>
       </AccordionSummary>
 
-      <AccordionDetails sx={{ backgroundColor: 'rgba(252, 252, 252, 0.12)' }}>
+      <AccordionDetails sx={{ backgroundColor: 'rgba(252, 252, 252, 0.12)', marginBottom: '1rem' }}>
         {/* Container for the responsive iframe */}
-        <div className="relative" style={{ paddingBottom: '56.25%',  }}>
+        <div className="relative" style={{ paddingBottom: '56.25%', marginBottom: '1rem', height: 0, overflow: 'hidden' }}>
           <iframe
             // Add a dynamic key to force re-render on prop change
             key={`${youtubeId}-${startTime}`}
