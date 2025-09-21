@@ -61,7 +61,7 @@ export default function VideoComponent({
             <button
               key={timestamp.id}
               onClick={() => setTimestamp(timestamp.timestamp_seconds)}
-              className="text-white hover:underline" // Added some basic styling
+              className="text-white underline" // Added some basic styling
             >
               <p>{timestamp.label}</p>
             </button>
