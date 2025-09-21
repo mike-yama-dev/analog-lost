@@ -11,7 +11,10 @@ class VideoController extends Controller
 {
     public function index()
     {
-        $videos = Video::with('timestamps')->get();
+        $videos = Video::with(['timestamps' => function ($query) {
+            $query->orderBy('timestamp_seconds', 'asc');
+        }])->get();
+
         return Inertia::render('welcome', ['videos' => $videos]);
     }
 }
