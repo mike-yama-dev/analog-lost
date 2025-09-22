@@ -42,8 +42,7 @@ export default function Welcome({ videos }: VideoAccordionProps) {
 <div style={{
   backgroundImage: 'url(/banner.png)',
   width: '100%',
-  // Height will be 25vw, but never smaller than 180px or larger than 400px
-  height: 'clamp(180px, 21vw, 400px)',
+  height: '21vw',
   backgroundSize: 'contain',
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center', 
