@@ -20,6 +20,7 @@ interface VideoComponentProps {
   timeStamp?: Timestamp[]; // Made timeStamp optional to allow for a default value
   setTimestamp: (time: number) => void;
   title: string;
+  autoPlay: boolean; // New prop to control autoplay
 }
 
 export default function VideoComponent({
@@ -27,7 +28,8 @@ export default function VideoComponent({
   startTime,
   timeStamp = [], // FIX: Default to an empty array to prevent map error
   setTimestamp,
-  title
+  title,
+  autoPlay,
 }: VideoComponentProps) {
   return (
     <div className="mb-6" style={{maxWidth: '560px', margin: '0 auto',  }}>
@@ -53,7 +55,7 @@ export default function VideoComponent({
             // Add a dynamic key to force re-render on prop change
             key={`${youtubeId}-${startTime}`}
             className="absolute top-0 left-0 w-full h-full" // Use classes for sizing
-            src={`https://www.youtube.com/embed/${youtubeId}?start=${startTime}`}
+            src={`https://www.youtube.com/embed/${youtubeId}?start=${startTime}&autoplay=${autoPlay ? 1 : 0}&rel=0&modestbranding=1&playsinline=1`}
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"

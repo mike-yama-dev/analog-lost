@@ -28,12 +28,13 @@ const getCleanYoutubeId = (url: string) => {
 
 export default function Welcome({ videos }: VideoAccordionProps) {
   const [startTimes, setStartTimes] = useState<Record<number, number>>({});
-
+const [autoPlayVideoId, setAutoPlayVideoId] = useState<number | null>(null);
   const handleTimestampUpdate = (videoId: number, time: number) => {
     setStartTimes((prevTimes) => ({
       ...prevTimes,
       [videoId]: time,
     }));
+    setAutoPlayVideoId(videoId); // Enable autoplay when a timestamp is clicked
   };
 
   return (
@@ -55,6 +56,7 @@ export default function Welcome({ videos }: VideoAccordionProps) {
           startTime={startTimes[video.id] || 0}
           timeStamp={video.timestamps}
           setTimestamp={(time) => handleTimestampUpdate(video.id, time)}
+          autoPlay={autoPlayVideoId === video.id} // Pass down the autoplay state
         />
       ))}
     </div>
