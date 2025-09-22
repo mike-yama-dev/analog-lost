@@ -66,7 +66,7 @@ export default function VideoComponent({
         </div>
 
         <div className="flex flex-col justify-start items-start mt-4 space-y-2">
-          {timeStamp.map((timestamp) => (
+          {timeStamp.map((timestamp, index) => (
             <button
               key={timestamp.id}
               onClick={() => setTimestamp(timestamp.timestamp_seconds)}
@@ -74,7 +74,7 @@ export default function VideoComponent({
               style={{ fontFamily: 'Bebas Neue', color: '#090021', fontSize: '1.35rem'  }} // Consistent font styling
               id="timestamp-button"
             >
-              <p>{timestamp.label}</p>
+              <p>{index+1}. {timestamp.label}</p>
             </button>
           ))}
         </div>
