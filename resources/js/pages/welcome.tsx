@@ -51,7 +51,7 @@ export default function Welcome({ videos }: VideoAccordionProps) {
 }}></div>
 
       </header>
-    <div style={{ padding: '1rem', minHeight: '100vh', backgroundImage: 'url(/background.png)', backgroundSize: '42rem', backgroundRepeat: 'repeat', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+    <div style={{ padding: '1rem', minHeight: '100vh', backgroundImage: 'url(/background.png)', backgroundSize: '55rem', backgroundRepeat: 'repeat', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
       <h1 style={{  textAlign: 'center', backgroundColor: 'rgba(252, 252, 252, 0.88)', maxWidth: '20rem', margin: '0 auto', marginBottom: '1rem', fontFamily: 'Bebas Neue', color: '#090021' }} className="text-2xl rounded-xl p-2" >Get Lost Timestamps!</h1>
       {videos.map((video) => (
         <VideoComponent
