@@ -67,7 +67,7 @@ export default function VideoComponent({
               key={timestamp.id}
               onClick={() => setTimestamp(timestamp.timestamp_seconds)}
               className="underline" // Added some basic styling
-              style={{ fontFamily: 'Bebas Neue', color: '#090021' }}
+              style={{ fontFamily: 'Bebas Neue', color: '#090021', fontSize: '1.35rem' }} // Consistent font styling
             >
               <p>{timestamp.label}</p>
             </button>
