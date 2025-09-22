@@ -41,14 +41,14 @@ export default function VideoComponent({
         expandIcon={<ArrowDropDownIcon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
-        sx={{ color: '#090021',  }} // Dark theme styles
+        sx={{ color: '#090021', marginTop: '1rem' }} // Dark theme styles
       >
-        <Typography component="span" style={{ fontFamily: 'Bebas Neue' }}>{title}</Typography>
+        <Typography component="span" style={{ fontFamily: 'Bebas Neue', fontSize: '1.5rem' }}>{title}</Typography>
       </AccordionSummary>
 
       <AccordionDetails sx={{ backgroundColor: 'rgba(252, 252, 252, 0.5)', marginBottom: '1rem', fontFamily: 'Bebas Neue' }}>
         {/* Container for the responsive iframe */}
-        <div className="relative" style={{ paddingBottom: '56.25%', marginBottom: '1rem', height: 0, overflow: 'hidden' }}>
+        <div className="relative" style={{ paddingBottom: '56.25%', marginBottom: '1rem',  height: 0, overflow: 'hidden' }}>
           <iframe
             // Add a dynamic key to force re-render on prop change
             key={`${youtubeId}-${startTime}`}

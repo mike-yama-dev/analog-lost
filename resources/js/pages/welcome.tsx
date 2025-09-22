@@ -41,8 +41,9 @@ export default function Welcome({ videos }: VideoAccordionProps) {
       <header style={{backgroundColor: '#090021', }}>
 <div style={{
   backgroundImage: 'url(/banner.png)',
-  width: '100%',
-  height: '21vw',
+  width: '50%',
+  height: '13vw',
+  margin: '0 auto',
   backgroundSize: 'contain',
   backgroundRepeat: 'no-repeat',
   backgroundPosition: 'center', 
@@ -50,8 +51,8 @@ export default function Welcome({ videos }: VideoAccordionProps) {
 }}></div>
 
       </header>
-    <div style={{ padding: '1rem', height: '100vh', overflowY: 'auto', backgroundImage: 'url(/background.png)', backgroundSize: '40rem', backgroundRepeat: 'repeat', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
-      <h1 style={{ color: '#fff', textAlign: 'center', backgroundColor: '#000000', maxWidth: '20rem', margin: '0 auto', marginBottom: '1rem' }} className="text-xl rounded-xl">Get Lost Timestamps!</h1>
+    <div style={{ padding: '1rem', height: '100vh', overflowY: 'auto', backgroundImage: 'url(/background.png)', backgroundSize: '42rem', backgroundRepeat: 'repeat', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>
+      <h1 style={{  textAlign: 'center', backgroundColor: 'rgba(252, 252, 252, 0.88)', maxWidth: '20rem', margin: '0 auto', marginBottom: '1rem', fontFamily: 'Bebas Neue', color: '#090021' }} className="text-2xl rounded-xl p-2" >Get Lost Timestamps!</h1>
       {videos.map((video) => (
         <VideoComponent
           key={video.id}
