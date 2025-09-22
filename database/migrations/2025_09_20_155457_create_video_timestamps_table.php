@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('video_id')->constrained('videos')->onDelete('cascade');
             $table->string('label');
             $table->integer('timestamp_seconds');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
