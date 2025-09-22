@@ -7,6 +7,8 @@ import {
 } from '@mui/material';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
+import './videoComponent.css'; // Import the CSS file for styling
+
 // Define the shape of your props for better type safety
 interface Timestamp {
   id: number;
@@ -68,8 +70,9 @@ export default function VideoComponent({
             <button
               key={timestamp.id}
               onClick={() => setTimestamp(timestamp.timestamp_seconds)}
-              className="underline" // Added some basic styling
-              style={{ fontFamily: 'Bebas Neue', color: '#090021', fontSize: '1.35rem' }} // Consistent font styling
+              className="underline cursor-pointer" // Added some basic styling
+              style={{ fontFamily: 'Bebas Neue', color: '#090021', fontSize: '1.35rem'  }} // Consistent font styling
+              id="timestamp-button"
             >
               <p>{timestamp.label}</p>
             </button>
