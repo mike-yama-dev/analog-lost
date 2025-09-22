@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import VideoComponent from '../components/videoComponent';
-import './Welcome.css';
+import './welcome.css';
 // Your interfaces here...
 interface Timestamp {
   id: number;
