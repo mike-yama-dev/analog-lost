@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title inertia>Get Lost Timestamps</title>
-        <meta name="description" content="Find timestamps from your favorite analog roadtrip series. Get Lost.">
+        <meta name="description" content="Find timestamps from your favorite analog roadtrip series: Get Lost.">
+        <meta name="image" content="/lost.png">
 
         <!-- Favicon links comment-->
         <link rel="icon" href="/favicon.ico" sizes="any">
