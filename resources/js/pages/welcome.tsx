@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import VideoComponent from '../components/videoComponent';
-
+import './Welcome.css';
 // Your interfaces here...
 interface Timestamp {
   id: number;
@@ -39,16 +39,7 @@ export default function Welcome({ videos }: VideoAccordionProps) {
   return (
     <div>
       <header style={{backgroundColor: '#090021', }}>
-<div style={{
-  backgroundImage: 'url(/banner.png)',
-  width: '50%',
-  height: '13vw',
-  margin: '0 auto',
-  backgroundSize: 'contain',
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'center', 
-  
-}}></div>
+<div className="header-banner"></div>
 
       </header>
     <div style={{ padding: '1rem', minHeight: '100vh', backgroundImage: 'url(/background.png)', backgroundSize: '55rem', backgroundRepeat: 'repeat', backgroundPosition: 'center', backgroundAttachment: 'fixed' }}>

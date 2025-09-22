@@ -1,0 +1,19 @@
+/* Welcome.css */
+
+.header-banner {
+  background-image: url('/banner.png');
+  width: 50%;
+  height: 13vw; /* Default height for larger screens */
+  margin: 0 auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Media query for screens 500px or smaller */
+@media (max-width: 500px) {
+  .header-banner {
+    width: 100%; /* New height for mobile screens */
+    height: 25vw; /* Adjust height proportionally */
+  }
+}
